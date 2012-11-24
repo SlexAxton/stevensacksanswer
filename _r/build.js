@@ -40,6 +40,15 @@
         disableI18n : false
     },
 
+    shim: {
+        'jquery': {
+            exports: '$'
+        },
+        'underscore': {
+            exports: '_'
+        }
+    },
+
     modules: [
         {
             name: 'room',

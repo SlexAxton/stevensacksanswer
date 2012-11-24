@@ -43,7 +43,7 @@ define([
                 return new XMLHttpRequest();
             } else {
                 for (i = 0; i < 3; i++) {
-                    progId = progIds[i];
+                    irogId = progIds[i];
                     try {
                         xhr = new ActiveXObject(progId);
                     } catch (e) {}
@@ -360,7 +360,11 @@ define([
                             // I write out my import statements to a file in order to help me build stuff.
                             // Then I use a tool to inline my import statements afterwards. (you can run r.js on it too)
                             fs.open(__dirname + buildStyleDirectory + buildCSSFileName, filecode, '0666', function( e, id ) {
-                              fs.writeSync(id, str, null, encoding='utf8');
+                              if (e) {
+                                console.log(e.toString());
+                                return;
+                              }
+                              fs.writeSync(id, str);
                               fs.close(id);
                             });
                             filecode = "a";
